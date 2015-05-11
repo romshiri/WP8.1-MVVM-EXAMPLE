@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="Romfix.View.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Romfix.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FlowDirection="RightToLeft"
+    Background="#FFE8E8E8">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10" Orientation="Horizontal">
+            <Image HorizontalAlignment="Left" Width="150" Source="ms-appx:///Assets/logo-morfix.png"/>
+            <TextBlock VerticalAlignment="Bottom" Margin="8,0,0,10" Text="גרסא 1.0" FontSize="13" Foreground="#FFA8A8A8"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="10">
+            <StackPanel>
+                <TextBlock FontSize="15" Text="אפליקציית רומפיקס הינה אפליקצית מילון עברי-אנגלי." Foreground="Black"/>
+                <TextBlock FontSize="15" TextWrapping="Wrap" Text="תודה למורפיקס על שירותי התרגום המעולים. כל הזכויות שמורות. ®" Foreground="Black"/>
+                <TextBlock/>
+
+                <TextBlock FontSize="15"  Foreground="#FF4078D8" Tapped="TextBlock_Tapped2">
+                    <Underline>
+                        <Run Text="לאתר מורפיקס"/>
+                     </Underline>
+                </TextBlock>
+
+                <TextBlock FontSize="15" Margin="0,20,0,0" Foreground="#FF4078D8" Tapped="TextBlock_Tapped">
+                    <Underline>
+                        <Run Text="ליצירת קשר"/>
+                     </Underline>
+                </TextBlock>
+
+                <TextBlock FontSize="13" Margin="0,20,0,0" TextWrapping="Wrap" Text="נבנה על ידי רום שירי לרווחת משתמשי ה-Windows Phone הישראלי." Foreground="#FF616161"/>
+                <TextBlock/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

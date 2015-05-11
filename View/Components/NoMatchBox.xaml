@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="Romfix.View.Components.NoMatchBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:local="using:Romfix.View.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    MinHeight="70"
+    d:DesignHeight="300"
+    d:DesignWidth="400" FlowDirection="RightToLeft">
+
+    <Grid  Background="White" x:Name="Layout">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <AddDeleteThemeTransition/>
+            </TransitionCollection>
+        </Grid.Transitions>
+        <Grid Margin="10"  DataContext="{Binding MainVm.TranslationVm, Source={StaticResource Locator}}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource InputWordStyle}" Text="לא נמצאו תוצאות לחיפוש." />
+                <StackPanel  Visibility="{Binding Model.CorrectionWords.Count,Converter={StaticResource CountToVisibilityConverter}}">
+                    <TextBlock Margin="0,15,0,0" FontSize="20" Style="{StaticResource InputWordStyle}" Text="אולי התכוונת ל:"/>
+
+                    <ItemsControl FlowDirection="{Binding Model.Type, Converter={StaticResource TranslationTypeToFlowDirectionConverter}}" ItemsSource="{Binding Model.CorrectionWords}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,0,0,10" Text="{Binding}" Foreground="#FF51A0E2" FontSize="25">
+                                  <i:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Tapped" >
+                                        <core:InvokeCommandAction Command="{Binding ElementName=Layout, Path=DataContext.TranslateCommand}" CommandParameter="{Binding}" />
+                                    </core:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

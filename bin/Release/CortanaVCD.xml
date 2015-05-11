@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+
+  <CommandSet xml:lang="en-us" Name="translateVcd">
+    <CommandPrefix>Translate</CommandPrefix>
+    <Example>Translate "International"</Example>
+
+  <Command Name="Translate">
+      <Example>Resource</Example>
+      <ListenFor>[Translate] [the] [word] {dictatedSearchTerms}</ListenFor>
+      <Feedback>Translating the word {dictatedSearchTerms}</Feedback>
+      <Navigate />
+    </Command>
+    
+    <PhraseTopic Label="dictatedSearchTerms" Scenario="Search">
+      <Subject>Word to Translate</Subject>
+    </PhraseTopic>
+  
+  </CommandSet>
+
+  <!-- Other CommandSets for other languages -->
+
+</VoiceCommands>
